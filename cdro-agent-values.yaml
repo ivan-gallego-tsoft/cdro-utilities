@@ -1,0 +1,16 @@
+serverEndpoint: flow-server
+resourceName: "flow-agent-{{ .Release.Name }}-{{ ordinalIndex }}"
+releaseNamePrefix: global
+resourcePools: 
+  - global
+replicas: 1
+
+images:
+  registry: "docker.io"
+  imageRepository: "ivangallego/cbflow-agent-custom"
+  tag: "2023.07.27"
+  pullPolicy: IfNotPresent
+
+flowCredentials:
+  existingSecret: cloudbees-flow-credentials
+  serverSecretReference: true
